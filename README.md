@@ -31,11 +31,12 @@ A solução foi projetada para atender aos requisitos de um ambiente bancário d
 
 ## 👥 Integrantes do Grupo
 
-| **Gabriel Almeida Silva Netto**  
-| **Gabriel Reis** 
-| **Gabriel Lima Leite** 
-| **Celiandro Borges Mazarro** 
-| **Eduardo** 
+- **Gabriel Almeida Silva Netto**  
+- **Gabriel Reis** 
+- **Gabriel Lima Leite** 
+- **Celiandro Borges Mazarro**
+- **Caio Gasparin** 
+- **Eduardo** 
 
 ---
 
