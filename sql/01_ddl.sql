@@ -8,9 +8,9 @@ USE sistema_bancario;
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT,
     cpf_cnpj VARCHAR(18) NOT NULL UNIQUE,
-    nome VARCHAR(100) NOT NULL,
-    telefone VARCHAR(20),
-    email VARCHAR(100),
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    telefone VARCHAR(20) UNIQUE,
+    email VARCHAR(100) UNIQUE,
     CONSTRAINT pk_cliente PRIMARY KEY (id_cliente)
 );
 
