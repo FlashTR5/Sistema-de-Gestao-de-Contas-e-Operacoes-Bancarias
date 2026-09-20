@@ -1,17 +1,19 @@
 CREATE DATABASE IF NOT EXISTS sistema_bancario
-	CHARACTER SET utf8mb4 
-	COLLATE utf8mb4_unicode_ci;
+    CHARACTER SET utf8mb4 
+    COLLATE utf8mb4_unicode_ci;
 
 USE sistema_bancario;
 
 -- 1. TABELAS BASE (INDEPENDENTES)
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT,
-    cpf_cnpj VARCHAR(18) NOT NULL UNIQUE,
-    nome VARCHAR(100) NOT NULL UNIQUE,
-    telefone VARCHAR(20) UNIQUE,
-    email VARCHAR(100) UNIQUE,
-    CONSTRAINT pk_cliente PRIMARY KEY (id_cliente)
+    cpf_cnpj VARCHAR(18) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20),
+    email VARCHAR(100),
+    CONSTRAINT pk_cliente PRIMARY KEY (id_cliente),
+    CONSTRAINT uq_cliente_cpf_cnpj UNIQUE (cpf_cnpj),
+    CONSTRAINT uq_cliente_email UNIQUE (email)
 );
 
 CREATE TABLE agencia (
@@ -45,7 +47,7 @@ CREATE TABLE funcionario (
         REFERENCES funcionario(id_funcionario) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- RELACIONAMENTO N:N COM ATRIBUTO PRÓPRIO #1 (Funcionário x Setor)
+-- RELACIONAMENTO N:N COM ATRIBUTO PRÓPRIO #1 (Funcionário x Setor - Histórico)
 CREATE TABLE funcionario_setor (
     id_funcionario INT NOT NULL,
     id_setor INT NOT NULL,
@@ -130,7 +132,7 @@ CREATE TABLE emprestimo (
     CONSTRAINT ck_emp_status CHECK (status IN ('EM_ANALISE', 'ATIVO', 'QUITADO', 'INADIMPLENTE', 'CANCELADO'))
 );
 
--- SUBCLASSE 1 (PK e FK em id_emprestimo)
+-- SUBCLASSE 1: Consignado
 CREATE TABLE emprestimo_consignado (
     id_emprestimo INT NOT NULL,
     orgao_emissor VARCHAR(100) NOT NULL,
@@ -140,13 +142,23 @@ CREATE TABLE emprestimo_consignado (
         REFERENCES emprestimo(id_emprestimo) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- SUBCLASSE 2 (PK e FK em id_emprestimo)
+-- SUBCLASSE 2: Financiamento
 CREATE TABLE financiamento (
     id_emprestimo INT NOT NULL,
     tipo_bem VARCHAR(50) NOT NULL,
     valor_entrada DECIMAL(15, 2) NOT NULL,
     CONSTRAINT pk_financiamento PRIMARY KEY (id_emprestimo),
     CONSTRAINT fk_sub_financiamento FOREIGN KEY (id_emprestimo) 
+        REFERENCES emprestimo(id_emprestimo) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- SUBCLASSE 3: Empréstimo Pessoal (Mantém o alinhamento com a RN20 do A1)
+CREATE TABLE emprestimo_pessoal (
+    id_emprestimo INT NOT NULL,
+    finalidade VARCHAR(100) NOT NULL,
+    taxa_juros_mensal DECIMAL(5, 2) NOT NULL,
+    CONSTRAINT pk_emp_pessoal PRIMARY KEY (id_emprestimo),
+    CONSTRAINT fk_sub_pessoal FOREIGN KEY (id_emprestimo) 
         REFERENCES emprestimo(id_emprestimo) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
