@@ -7,6 +7,7 @@
 > **Semestre:** 2026/2  
 > **SGBD Utilizado:** MySQL 8.0 (Containerizado via Docker)  
 > **Interface da Aplicação:** Python 3 + Streamlit  
+> **Repositório Oficial:** [github.com/guilhermebarcelos06/Trabalho-de-banco-de-dados](https://github.com/guilhermebarcelos06/Trabalho-de-banco-de-dados.git)
 
 ---
 
@@ -17,6 +18,7 @@
 - **Celiandro Borges Mazarro**
 - **Caio Gasparin**
 - **Eduardo**
+- **Guilherme Barcelos**
 
 ---
 
