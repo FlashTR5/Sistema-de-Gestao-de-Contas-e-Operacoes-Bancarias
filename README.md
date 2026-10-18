@@ -16,7 +16,7 @@
 - **Gabriel Lima Leite**
 - **Celiandro Borges Mazarro**
 - **Caio Gasparin**
-- **Eduardo**
+- **Eduardo Maciel**
 
 ---
 
