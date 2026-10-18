@@ -12,7 +12,7 @@ def get_connection(user=None, password=None):
     Permite passar usuário e senha para simulação dos perfis B5 (admin, atendente, auditor).
     """
     db_host = os.getenv("DB_HOST", "localhost")
-    db_port = int(os.getenv("DB_PORT", "3306"))
+    db_port = int(os.getenv("DB_PORT", "3308"))
     db_name = os.getenv("DB_NAME", "sistema_bancario")
     db_user = user or os.getenv("DB_USER", "root")
     db_pass = password or os.getenv("DB_PASSWORD", "banco_secret")
