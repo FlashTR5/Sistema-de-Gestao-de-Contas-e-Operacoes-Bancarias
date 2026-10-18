@@ -101,10 +101,10 @@ cp .env.example .env
 docker compose up -d
 
 # 4. Aguarde cerca de 10 segundos para inicialização do MySQL e execute os scripts na ordem:
-docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario sql/01_ddl.sql
-docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario sql/02_Cargas.sql
-docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario sql/04_etapa2_seguranca_auditoria.sql
-docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario sql/05_etapa2_otimizacao_indices.sql
+Get-Content sql/01_ddl.sql | docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario
+Get-Content sql/02_carga.sql | docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario
+Get-Content sql/04_etapa2_seguranca_auditoria.sql | docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario
+Get-Content sql/05_etapa2_otimizacao_indices.sql | docker exec -i mysql-banco mysql -uroot -pbanco_secret sistema_bancario
 ```
 
 ### 3. Configuração do Ambiente Python e Execução da Aplicação
