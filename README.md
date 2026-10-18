@@ -91,8 +91,8 @@ banco/
 ### 2. Inicialização do Banco de Dados (MySQL 8.0)
 ```bash
 # 1. Clone o repositório oficial
-git clone https://github.com/guilhermebarcelos06/Trabalho-de-banco-de-dados.git
-cd Trabalho-de-banco-de-dados
+git clone https://github.com/FlashTR5/Sistema-de-Gestao-de-Contas-e-Operacoes-Bancarias
+cd Sistema-de-Gestao-de-Contas-e-Operacoes-Bancarias
 
 # 2. Configure o arquivo de variáveis de ambiente
 cp .env.example .env
